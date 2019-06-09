@@ -1774,9 +1774,8 @@ vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.config('30d');
       });
     },
     parseData: function parseData(data) {
-      vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.set('user', data, "30d");
+      vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.set('user', data.data, "30d");
       this.$emit("save-user", data.data);
-      console.log("Login", data.data);
     }
   }
 });
@@ -1861,9 +1860,8 @@ vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.config('30d');
       });
     },
     parseData: function parseData(data) {
-      vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.set('user', data, "30d");
+      vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.set('user', data.data, "30d");
       this.$emit("save-user", data.data);
-      console.log("Register", data.data);
     }
   }
 });
@@ -49738,9 +49736,15 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49759,19 +49763,22 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('user-register', __webpack_require__(/*! ./components/auth/Register */ "./resources/js/components/auth/Register.vue")["default"]);
-Vue.component('user-login', __webpack_require__(/*! ./components/auth/Login */ "./resources/js/components/auth/Login.vue")["default"]); //#######################################################################\\
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('user-register', __webpack_require__(/*! ./components/auth/Register */ "./resources/js/components/auth/Register.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('user-login', __webpack_require__(/*! ./components/auth/Login */ "./resources/js/components/auth/Login.vue")["default"]); //#######################################################################\\
 
-Vue.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
-Vue.component('new-article', __webpack_require__(/*! ./components/NewArticle.vue */ "./resources/js/components/NewArticle.vue")["default"]);
-Vue.component('load-article', __webpack_require__(/*! ./components/LoadArticle.vue */ "./resources/js/components/LoadArticle.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('new-article', __webpack_require__(/*! ./components/NewArticle.vue */ "./resources/js/components/NewArticle.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('load-article', __webpack_require__(/*! ./components/LoadArticle.vue */ "./resources/js/components/LoadArticle.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+
+
+vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.config('30d');
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: function data() {
     return {
@@ -49782,7 +49789,34 @@ var app = new Vue({
       }
     };
   },
+  created: function created() {
+    this.tryLoginWithToken();
+  },
   methods: {
+    tryLoginWithToken: function tryLoginWithToken() {
+      var _this = this;
+
+      this.user = vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.get('user');
+      console.log("TOKEN", this.user);
+      var vm = this;
+      fetch('api/user/token', {
+        method: 'post',
+        body: JSON.stringify(this.user),
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        _this.parseData(data);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    parseData: function parseData(data) {
+      console.log("Token Check", data.data);
+      this.user = data.data;
+    },
     saveUser: function saveUser(userInfo) {
       console.log("App Level", userInfo);
       this.user = userInfo;

@@ -64,9 +64,8 @@ export default {
         .catch(err => console.log(err));
     },
     parseData(data){
-      VueCookies.set('user',data, "30d");
+      VueCookies.set('user',data.data, "30d");
       this.$emit("save-user", data.data);
-      console.log("Register", data.data);
     }
   }
 };

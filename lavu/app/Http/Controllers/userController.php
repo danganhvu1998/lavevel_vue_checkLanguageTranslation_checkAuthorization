@@ -51,4 +51,15 @@ class userController extends Controller
             return new UserResource($this->errorCreator("Wrong email or password"));
         }
     }
+
+    public function rememberTokenCheck(request $request){
+        $user = User::where("id", $request->id)
+            ->where("remember_token", $request->remember_token)
+            ->first();
+        if($user==NULL){
+            return new UserResource($this->errorCreator("token invalid"));
+        } else {
+            return new UserResource($user);
+        }
+    }
 }

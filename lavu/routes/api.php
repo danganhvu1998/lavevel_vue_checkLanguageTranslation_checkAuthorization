@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/user/register', 'userController@register');
 
 Route::post('/user/login', 'userController@login');
+
+Route::post('/user/token', 'userController@rememberTokenCheck');

@@ -33,6 +33,9 @@ Vue.component('load-article', require('./components/LoadArticle.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
+VueCookies.config('30d')
 
 const app = new Vue({
     el: '#app',
@@ -45,10 +48,37 @@ const app = new Vue({
             },
         };
     },
+
+    created: function () {
+        this.tryLoginWithToken();
+    },
+
     methods: {
+        tryLoginWithToken(){
+            this.user = VueCookies.get('user');
+            console.log("TOKEN", this.user);
+            let vm = this;
+            fetch('api/user/token', {
+                method: 'post',
+                body: JSON.stringify(this.user),
+                headers: {
+                'content-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                this.parseData(data);
+            })
+            .catch(err => console.log(err));
+        },
+        parseData(data){
+            console.log("Token Check", data.data);
+            this.user = data.data;
+        },
         saveUser(userInfo){
             console.log("App Level", userInfo);
             this.user = userInfo;    
         },
+
     },
 });
