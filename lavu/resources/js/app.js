@@ -19,6 +19,11 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+Vue.component('user-register', require('./components/auth/Register').default);
+Vue.component('user-login', require('./components/auth/Login').default);
+
+//#######################################################################\\
+
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('new-article', require('./components/NewArticle.vue').default);
 Vue.component('load-article', require('./components/LoadArticle.vue').default);

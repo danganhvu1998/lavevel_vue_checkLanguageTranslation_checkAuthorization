@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-2">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-success mb-2">
     <div class="container">
       <a href="#" class="navbar-brand">This Shit Is Hard</a>
     </div>
