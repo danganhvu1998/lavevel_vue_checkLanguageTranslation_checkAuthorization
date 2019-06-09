@@ -22,14 +22,14 @@ export default {
   data() {
     return {
       user: {
-        email: '',
-        password: '',
+        email: 'dav@iniad.org',
+        password: 'conmaxau',
       }
     };
   },
 
   methods: {
-    login(){      
+    login(){
       let vm = this;
       fetch('api/user/login', {
         method: 'post',
@@ -44,9 +44,11 @@ export default {
         })
         .catch(err => console.log(err));
     },
+
     parseData(data){
       VueCookies.set('user',data, "30d");
-      console.log(VueCookies.get('user'));
+      this.$emit("save-user", data.data);
+      console.log("Login", data.data);
     }
   }
 };

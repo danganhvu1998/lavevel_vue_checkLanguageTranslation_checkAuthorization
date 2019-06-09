@@ -21,11 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <navbar></navbar>
+        <navbar v-bind:app-user="user"></navbar>
         <main class="py-4 container">
             @yield('content')
         </main>
-
     </div>
 </body>
     

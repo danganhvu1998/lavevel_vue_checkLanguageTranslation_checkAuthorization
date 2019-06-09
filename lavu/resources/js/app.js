@@ -36,4 +36,19 @@ Vue.component('load-article', require('./components/LoadArticle.vue').default);
 
 const app = new Vue({
     el: '#app',
+    data() {
+        return {
+            user: {
+                name: '',
+                email: '',
+                remember_token: '',
+            },
+        };
+    },
+    methods: {
+        saveUser(userInfo){
+            console.log("App Level", userInfo);
+            this.user = userInfo;    
+        },
+    },
 });

@@ -25,6 +25,7 @@
   VueCookies.config('30d')
 
 export default {
+  props:["app-user"],
   data() {
     return {
       newUser: {
@@ -64,7 +65,8 @@ export default {
     },
     parseData(data){
       VueCookies.set('user',data, "30d");
-      console.log(VueCookies.get('user'));
+      this.$emit("save-user", data.data);
+      console.log("Register", data.data);
     }
   }
 };
