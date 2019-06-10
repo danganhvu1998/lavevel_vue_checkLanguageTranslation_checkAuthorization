@@ -1697,6 +1697,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1708,8 +1710,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["appUser"]
+  props: ["appUser"],
+  methods: {
+    logout: function logout() {
+      vue_cookies__WEBPACK_IMPORTED_MODULE_0___default.a.remove('user');
+      location.replace("/");
+    }
+  }
 });
 
 /***/ }),
@@ -37312,21 +37322,33 @@ var render = function() {
     { staticClass: "navbar navbar-expand-sm navbar-dark bg-success mb-2" },
     [
       _c("div", { staticClass: "container" }, [
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+        _c("a", { staticClass: "navbar-brand", attrs: { href: "/write" } }, [
           _vm._v("Write")
         ]),
         _vm._v(" "),
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+        _c("a", { staticClass: "navbar-brand", attrs: { href: "/home" } }, [
           _vm._v("Read")
         ]),
         _vm._v(" "),
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-          _vm._v("Auth")
-        ]),
+        _vm.appUser.id == 0
+          ? _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
+              _vm._v("Auth")
+            ])
+          : _vm._e(),
         _vm._v(" "),
-        _c("span", { staticClass: "btn btn-primary" }, [
-          _vm._v(_vm._s(_vm.appUser.name))
-        ])
+        _vm.appUser.id > 0
+          ? _c(
+              "a",
+              { staticClass: "btn btn-warning", on: { click: _vm.logout } },
+              [_vm._v("Logout")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.appUser.id > 0
+          ? _c("span", { staticClass: "btn btn-primary" }, [
+              _vm._v(_vm._s(_vm.appUser.name))
+            ])
+          : _vm._e()
       ])
     ]
   )
@@ -49797,7 +49819,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var _this = this;
 
       this.user = vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.get('user');
-      console.log("TOKEN", this.user);
       var vm = this;
       fetch('api/user/token', {
         method: 'post',
@@ -49814,12 +49835,13 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       });
     },
     parseData: function parseData(data) {
-      console.log("Token Check", data.data);
-      this.user = data.data;
+      this.saveUser(data.data);
     },
     saveUser: function saveUser(userInfo) {
       console.log("App Level", userInfo);
       this.user = userInfo;
+      console.log(location.pathname);
+      if (this.user.id > 0 && location.pathname == "/") location.replace("/home");
     }
   }
 });

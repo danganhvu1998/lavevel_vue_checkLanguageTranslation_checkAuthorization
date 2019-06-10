@@ -56,7 +56,6 @@ const app = new Vue({
     methods: {
         tryLoginWithToken(){
             this.user = VueCookies.get('user');
-            console.log("TOKEN", this.user);
             let vm = this;
             fetch('api/user/token', {
                 method: 'post',
@@ -72,12 +71,13 @@ const app = new Vue({
             .catch(err => console.log(err));
         },
         parseData(data){
-            console.log("Token Check", data.data);
-            this.user = data.data;
+            this.saveUser(data.data)
         },
         saveUser(userInfo){
             console.log("App Level", userInfo);
             this.user = userInfo;    
+            console.log(location.pathname);
+            if(this.user.id > 0 && location.pathname=="/") location.replace("/home");
         },
 
     },
