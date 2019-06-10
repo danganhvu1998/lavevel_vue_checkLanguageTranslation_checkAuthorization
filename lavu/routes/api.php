@@ -23,6 +23,8 @@ Route::post('/user/login', 'userController@login');
 
 Route::post('/user/token', 'userController@rememberTokenCheck');
 
+Route::get('/article/read', "articleController@read");
+
 Route::post('/article/write', "userArticleController@write");
 
 Route::get("error/access_denied", "ErrorAnnouncementController@accessDenied");

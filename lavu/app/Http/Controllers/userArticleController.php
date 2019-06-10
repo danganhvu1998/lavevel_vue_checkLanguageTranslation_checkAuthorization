@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Articles;
+use App\Http\Resources\ArticleResource;
 
 class userArticleController extends Controller
 {   
