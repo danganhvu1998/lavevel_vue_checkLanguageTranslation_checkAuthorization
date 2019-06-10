@@ -42,9 +42,9 @@ const app = new Vue({
     data() {
         return {
             user: {
-                name: '',
-                email: '',
-                remember_token: '',
+                user_name: '',
+                user_email: '',
+                user_remember_token: '',
             },
         };
     },
@@ -76,8 +76,7 @@ const app = new Vue({
         saveUser(userInfo){
             console.log("App Level", userInfo);
             this.user = userInfo;    
-            console.log(location.pathname);
-            if(this.user.id > 0 && location.pathname=="/") location.replace("/home");
+            if(this.user.user_id > 0 && location.pathname=="/") location.replace("/home");
         },
 
     },

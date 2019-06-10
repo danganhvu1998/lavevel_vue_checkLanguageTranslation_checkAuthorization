@@ -1759,8 +1759,8 @@ vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.config('30d');
   data: function data() {
     return {
       user: {
-        email: 'dav@iniad.org',
-        password: 'conmaxau'
+        user_email: 'dav@iniad.org',
+        user_password: 'conmaxau'
       }
     };
   },
@@ -1834,9 +1834,9 @@ vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.config('30d');
   data: function data() {
     return {
       newUser: {
-        name: '',
-        email: '',
-        password: ''
+        user_name: '',
+        user_email: '',
+        user_password: ''
       },
       rePassword: ''
     };
@@ -1846,9 +1846,9 @@ vue_cookies__WEBPACK_IMPORTED_MODULE_1___default.a.config('30d');
   },
   methods: {
     fillInput: function fillInput() {
-      this.newUser.name = "Dang Anh Vu";
-      this.newUser.email = "dav@iniad.org";
-      this.newUser.password = "conmaxau";
+      this.newUser.user_name = "Dang Anh Vu";
+      this.newUser.user_email = "dav@iniad.org";
+      this.newUser.user_password = "conmaxau";
       this.rePassword = "conmaxau";
     },
     register: function register() {
@@ -37330,13 +37330,13 @@ var render = function() {
           _vm._v("Read")
         ]),
         _vm._v(" "),
-        _vm.appUser.id == 0
+        _vm.appUser.user_id == 0
           ? _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
               _vm._v("Auth")
             ])
           : _vm._e(),
         _vm._v(" "),
-        _vm.appUser.id > 0
+        _vm.appUser.user_id > 0
           ? _c(
               "a",
               { staticClass: "btn btn-warning", on: { click: _vm.logout } },
@@ -37344,9 +37344,9 @@ var render = function() {
             )
           : _vm._e(),
         _vm._v(" "),
-        _vm.appUser.id > 0
+        _vm.appUser.user_id > 0
           ? _c("span", { staticClass: "btn btn-primary" }, [
-              _vm._v(_vm._s(_vm.appUser.name))
+              _vm._v(_vm._s(_vm.appUser.user_name))
             ])
           : _vm._e()
       ])
@@ -37419,19 +37419,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.user.email,
-                expression: "user.email"
+                value: _vm.user.user_email,
+                expression: "user.user_email"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", placeholder: "email" },
-            domProps: { value: _vm.user.email },
+            domProps: { value: _vm.user.user_email },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.user, "email", $event.target.value)
+                _vm.$set(_vm.user, "user_email", $event.target.value)
               }
             }
           })
@@ -37443,19 +37443,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.user.password,
-                expression: "user.password"
+                value: _vm.user.user_password,
+                expression: "user.user_password"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", placeholder: "pass" },
-            domProps: { value: _vm.user.password },
+            domProps: { value: _vm.user.user_password },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.user, "password", $event.target.value)
+                _vm.$set(_vm.user, "user_password", $event.target.value)
               }
             }
           })
@@ -37512,19 +37512,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newUser.name,
-                expression: "newUser.name"
+                value: _vm.newUser.user_name,
+                expression: "newUser.user_name"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", placeholder: "name" },
-            domProps: { value: _vm.newUser.name },
+            domProps: { value: _vm.newUser.user_name },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newUser, "name", $event.target.value)
+                _vm.$set(_vm.newUser, "user_name", $event.target.value)
               }
             }
           })
@@ -37536,19 +37536,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newUser.email,
-                expression: "newUser.email"
+                value: _vm.newUser.user_email,
+                expression: "newUser.user_email"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", placeholder: "email" },
-            domProps: { value: _vm.newUser.email },
+            domProps: { value: _vm.newUser.user_email },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newUser, "email", $event.target.value)
+                _vm.$set(_vm.newUser, "user_email", $event.target.value)
               }
             }
           })
@@ -37560,19 +37560,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newUser.password,
-                expression: "newUser.password"
+                value: _vm.newUser.user_password,
+                expression: "newUser.user_password"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", placeholder: "pass" },
-            domProps: { value: _vm.newUser.password },
+            domProps: { value: _vm.newUser.user_password },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newUser, "password", $event.target.value)
+                _vm.$set(_vm.newUser, "user_password", $event.target.value)
               }
             }
           })
@@ -49805,9 +49805,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: function data() {
     return {
       user: {
-        name: '',
-        email: '',
-        remember_token: ''
+        user_name: '',
+        user_email: '',
+        user_remember_token: ''
       }
     };
   },
@@ -49840,8 +49840,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     saveUser: function saveUser(userInfo) {
       console.log("App Level", userInfo);
       this.user = userInfo;
-      console.log(location.pathname);
-      if (this.user.id > 0 && location.pathname == "/") location.replace("/home");
+      if (this.user.user_id > 0 && location.pathname == "/") location.replace("/home");
     }
   }
 });

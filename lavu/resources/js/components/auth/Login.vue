@@ -3,10 +3,10 @@
         <h3>Login Form</h3>
         <form @submit.prevent="login">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="email" v-model="user.email">
+              <input type="text" class="form-control" placeholder="email" v-model="user.user_email">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="pass" v-model="user.password">
+              <input type="text" class="form-control" placeholder="pass" v-model="user.user_password">
             </div>
             <button type="submit" class="btn btn-light btn-block">Login</button>
         </form>
@@ -22,8 +22,8 @@ export default {
   data() {
     return {
       user: {
-        email: 'dav@iniad.org',
-        password: 'conmaxau',
+        user_email: 'dav@iniad.org',
+        user_password: 'conmaxau',
       }
     };
   },

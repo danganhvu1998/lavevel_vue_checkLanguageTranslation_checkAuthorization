@@ -29,10 +29,10 @@ class userController extends Controller
             return new UserResource($this->errorCreator("Existed Account"));
         }
         $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->remember_token = Hash::make($request->email.$request->password);
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
+        $user->password = Hash::make($request->user_password);
+        $user->remember_token = Hash::make($request->email.$request->user_password);
         if( $user->save() ){
             return new UserResource($user);
         } else {
@@ -41,11 +41,13 @@ class userController extends Controller
     }
 
     public function login(request $request){
-        $user = User::where("email", $request->email)->first();
+        $user = User::where("email", $request->user_email)->first();
         if($user==NULL){
             return new UserResource($this->errorCreator("Wrong email or password"));
         }
-        if (Hash::check($request->password, $user->password)) {
+        if (Hash::check($request->user_password, $user->password)) {
+            $user->remember_token = Hash::make($request->email.$request->user_password.random_int(0, 999999999));
+            $user->save();
             return new UserResource($user);
         } else {
             return new UserResource($this->errorCreator("Wrong email or password"));
@@ -53,8 +55,8 @@ class userController extends Controller
     }
 
     public function rememberTokenCheck(request $request){
-        $user = User::where("id", $request->id)
-            ->where("remember_token", $request->remember_token)
+        $user = User::where("id", $request->user_id)
+            ->where("remember_token", $request->user_remember_token)
             ->first();
         if($user==NULL){
             return new UserResource($this->errorCreator("token invalid"));

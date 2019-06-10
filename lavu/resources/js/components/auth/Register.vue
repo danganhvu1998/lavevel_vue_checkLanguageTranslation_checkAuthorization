@@ -3,13 +3,13 @@
         <h3>Register Form</h3>
         <form @submit.prevent="register">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="name" v-model="newUser.name">
+              <input type="text" class="form-control" placeholder="name" v-model="newUser.user_name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="email" v-model="newUser.email">
+              <input type="text" class="form-control" placeholder="email" v-model="newUser.user_email">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="pass" v-model="newUser.password">
+              <input type="text" class="form-control" placeholder="pass" v-model="newUser.user_password">
             </div>
             <div class="form-group">
               <input type="text" class="form-control" placeholder="re_pass" v-model="rePassword">
@@ -29,9 +29,9 @@ export default {
   data() {
     return {
       newUser: {
-        name: '',
-        email: '',
-        password: '',
+        user_name: '',
+        user_email: '',
+        user_password: '',
       },
       rePassword: '',
     };
@@ -43,9 +43,9 @@ export default {
 
   methods: {
     fillInput(){
-      this.newUser.name = "Dang Anh Vu";
-      this.newUser.email = "dav@iniad.org";
-      this.newUser.password = "conmaxau";
+      this.newUser.user_name = "Dang Anh Vu";
+      this.newUser.user_email = "dav@iniad.org";
+      this.newUser.user_password = "conmaxau";
       this.rePassword = "conmaxau";
     },
     register(){      

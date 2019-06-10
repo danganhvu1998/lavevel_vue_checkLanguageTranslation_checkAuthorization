@@ -16,12 +16,12 @@ class UserResource extends JsonResource
     {
         #return parent::toArray($request);
         return [
-            "id" => $this->id,
-            "name" => $this->name,
-            "email" => $this->email,
-            "remember_token" => $this->remember_token,
-            "error" => $this->error,
-            "error_type" => $this->error_type,
+            "user_id" => $this->id,
+            "user_name" => $this->name,
+            "user_email" => $this->email,
+            "user_remember_token" => $this->remember_token,
+            "auth_error" => $this->error,
+            "auth_error_type" => $this->error_type,
         ];
     }
 }

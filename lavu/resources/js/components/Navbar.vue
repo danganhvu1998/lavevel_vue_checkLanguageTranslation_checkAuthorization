@@ -3,9 +3,9 @@
     <div class="container">
       <a href="/write" class="navbar-brand">Write</a>
       <a href="/home" class="navbar-brand">Read</a>
-      <a v-if="appUser.id==0" href="/" class="navbar-brand">Auth</a>
-      <a v-if="appUser.id>0" @click="logout" class="btn btn-warning">Logout</a>
-      <span v-if="appUser.id>0" class="btn btn-primary">{{appUser.name}}</span>
+      <a v-if="appUser.user_id==0" href="/" class="navbar-brand">Auth</a>
+      <a v-if="appUser.user_id>0" @click="logout" class="btn btn-warning">Logout</a>
+      <span v-if="appUser.user_id>0" class="btn btn-primary">{{appUser.user_name}}</span>
     </div>
   </nav>
 </template>
